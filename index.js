@@ -1,7 +1,9 @@
 #!/usr/bin/env node
 import chalk from 'chalk';
 import { execSync } from 'child_process';
+import * as fs from 'fs';
 import { join } from 'path';
+
 
 let projectName = process.argv[2];
 projectName ??= ".";
@@ -13,7 +15,7 @@ try {
 
     const gitPath = join(projectPath, '.git');
     if (fs.existsSync(gitPath)) {
-        fs.rmdirSync(gitPath, { recursive: true });
+        fs.rmSync(gitPath, { recursive: true });
     }
     const packageLockPath = join(projectPath, 'package-lock.json');
     if (fs.existsSync(packageLockPath)) {
@@ -23,7 +25,7 @@ try {
     execSync('npm i');
 }
 catch (err) {
-    console.log(chalk.red("Directory", projectPath, "already exists, or something else went wrong."));
+    console.log(chalk.red("Directory", projectPath, "already exists, or something else went wrong. \N Error:", err));
     process.exit(1);
 }
 
