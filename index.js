@@ -10,6 +10,16 @@ const projectPath = join(process.cwd(), projectName);
 try {
     execSync(`git clone https://github.com/eekelof/SoloJSX-template-ts.git ${projectPath}`);
     process.chdir(projectPath);
+
+    const gitPath = join(projectPath, '.git');
+    if (fs.existsSync(gitPath)) {
+        fs.rmdirSync(gitPath, { recursive: true });
+    }
+    const packageLockPath = join(projectPath, 'package-lock.json');
+    if (fs.existsSync(packageLockPath)) {
+        fs.unlinkSync(packageLockPath);
+    }
+
     execSync('npm i');
 }
 catch (err) {
