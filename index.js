@@ -3,11 +3,9 @@ import chalk from 'chalk';
 import { execSync } from 'child_process';
 import { join } from 'path';
 
-const projectName = process.argv[2];
-if (!projectName) {
-    console.error('Please provide a project name');
-    process.exit(1);
-}
+let projectName = process.argv[2];
+projectName ??= ".";
+
 const projectPath = join(process.cwd(), projectName);
 try {
     execSync(`git clone https://github.com/eekelof/SoloJSX-template-ts.git ${projectPath}`);
@@ -20,6 +18,8 @@ catch (err) {
 }
 
 console.log(chalk.green("Project", chalk.green.bold(projectName), "created!"));
-console.log(chalk.blue("Now run the following commands:"));
-console.log(`cd ${projectName}`);
+console.log(chalk.blue("Now run the following command" + ((projectName != ".") ? "s" : "") + ":"));
+if (projectName != ".")
+    console.log(`cd ${projectName}`);
 console.log(`npm run dev`);
+
