@@ -25,4 +25,3 @@ console.log(chalk.blue("Now run the following command" + ((projectName != ".") ?
 if (projectName != ".")
     console.log(`cd ${projectName}`);
 console.log(`npm run dev`);
-
