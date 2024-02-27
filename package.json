@@ -1,12 +1,12 @@
 {
     "type": "module",
     "name": "create-solojsx-app",
-    "version": "1.3.4",
+    "version": "1.3.5",
     "description": "Generates a SoloJSX app",
     "main": "index.js",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/eekelof/create.solojsx-app.git"
+        "url": "git+https://github.com/SoloJSX/create.solojsx-app.git"
     },
     "bin": {
         "create-solojsx-app": "./index.js"
