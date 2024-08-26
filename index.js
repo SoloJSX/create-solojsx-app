@@ -26,7 +26,7 @@ try {
     process.chdir(projectPath);
 
     const repo = "https://github.com/SoloJSX/" + repoName + ".git";
-    execSync(`git clone ` + repo);
+    execSync(`git clone --quiet ` + repo);
     execSync(`rsync -av --progress ` + repoName + `/ ${projectPath}/ --exclude '.git' --exclude 'package-lock.json' --exclude 'LICENSE'`);
     execSync(`rm -rf ` + repoName);
     execSync('npm i');
